@@ -69,6 +69,7 @@ export default function App() {
           friends={friends}
           selectFriend={selectFriend}
           onSpltBill={handleSplitBill}
+          key={selectFriend.id}
         />
       )}
     </div>
@@ -200,19 +201,19 @@ function FormSplitBill({ friends, selectFriend, onSpltBill }) {
   return (
     <form className="form-split-bill" onSubmit={handleSubmit}>
       <h2>💸 Split a bill with {selectFriend.name}</h2>
-      <label htmlFor="bill-amount">💰 Bill Amount</label>
+      <label htmlFor="bill-amount-3">💰 Bill Amount</label>
       <input
-        type="text"
+        type="number"
         name="bill-amount"
-        id="bill-amount"
+        id="bill-amount-3"
         value={billAmount}
         onChange={(e) => setBillAmount(Number(e.target.value))}
       />
-      <label htmlFor="bill-amount">🧍‍♂️ Your Expense</label>
+      <label htmlFor="bill-amount-2">🧍‍♂️ Your Expense</label>
       <input
-        type="text"
+        type="number"
         name="bill-amount"
-        id="bill-amount"
+        id="bill-amount-2"
         value={yourExpense}
         onChange={(e) =>
           setYourExpense(
@@ -222,11 +223,11 @@ function FormSplitBill({ friends, selectFriend, onSpltBill }) {
           )
         } // Prevents yourExpense from exceeding billAmount
       />
-      <label htmlFor="bill-amount">🧑‍🤝‍🧑 {selectFriend.name}'s Expense</label>
+      <label htmlFor="bill-amount-1">🧑‍🤝‍🧑 {selectFriend.name}'s Expense</label>
       <input
-        type="text"
+        type="number"
         name="bill-amount"
-        id="bill-amount"
+        id="bill-amount-1"
         value={friendExpense > 0 ? friendExpense : ""}
         disabled
       />
